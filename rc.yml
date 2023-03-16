@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: myrc
+spec:
+  replicas: 1
+  selector:
+    DC: US
+  template:
+    metadata:
+      name: "MyPOD"
+      labels:
+        DC: US
+    spec:
+      containers:
+      - name: "myc2"
+        image: "httpd"
+        ports:
+        - containerPort: 80
